@@ -5,19 +5,19 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 dotenv.config();
-const app=express();
+const app = express();
 
 try {
     await db.authenticate();
     console.log('database connected');
 } catch (error) {
-    console.log(error); 
+    console.log(error);
 }
 
-app.use(cors({credentials:true,origin:'*'}));
+app.use(cors({ credentials: true, origin: '*' }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
 
-const PORT = process.env.PORT || 5000; 
-app.listen(PORT,()=>console.log(`Server running at port ${PORT}`));
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
