@@ -2,7 +2,7 @@ runtime: nodejs16
 
 env_variables:
   NODE_ENV: production
-  PORT: 8080
+  PORT: 5000
   VARIABLE_NAME: value
 
 handlers:
