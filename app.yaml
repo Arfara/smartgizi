@@ -1,0 +1,10 @@
+runtime: nodejs16 
+
+env_variables:
+  NODE_ENV: production
+  PORT: 8080
+  VARIABLE_NAME: value
+
+handlers:
+  - url: /.*
+    script: auto
