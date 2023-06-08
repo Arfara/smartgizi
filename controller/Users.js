@@ -64,5 +64,6 @@ export const Logout = async(req, res) => {
             id: userId
         }
     });
+    res.clearCookie('refreshToken');
     return res.sendStatus(200);
 }
