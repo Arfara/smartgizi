@@ -50,11 +50,6 @@ export const Login = async(req, res) => {
                 id: userId
             }
         });
-        res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: true, // Add this
-            maxAge: 24 * 60 * 60 * 1000
-        });
         res.json({ accessToken })
     } catch (error) {
         res.status(404).json({ msg: "Email tidak dapat ditemukan" });
@@ -62,13 +57,6 @@ export const Login = async(req, res) => {
 }
 
 export const Logout = async(req, res) => {
-    const refreshToken = req.cookies.refreshToken;
-    if (!refreshToken) return res.sendStatus(204);
-    const user = await Users.findAll({
-        where: {
-            refresh_token: refreshToken
-        }
-    });
     if (!user[0]) return res.sendStatus(204);
     const userId = user[0].id;
     await Users.update({ refresh_token: null }, {
@@ -76,6 +64,5 @@ export const Logout = async(req, res) => {
             id: userId
         }
     });
-    res.clearCookie('refreshToken');
     return res.sendStatus(200);
 }
