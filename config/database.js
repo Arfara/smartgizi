@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('smartgizi-user-database','root'{
+const db = new Sequelize('smartgizi-user-db','root'{
     host:'34.101.41.22',
     dialect:'mysql'
 });
